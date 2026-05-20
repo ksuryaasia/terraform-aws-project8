@@ -1,12 +1,10 @@
-name: Terraform AWS Deployment
+name: Terraform AWS Destroy
 
 on:
-  push:
-    branches:
-      - main
+  workflow_dispatch:   # Manual trigger
 
 jobs:
-  terraform:
+  terraform-destroy:
     runs-on: ubuntu-latest
 
     env:
@@ -31,8 +29,5 @@ jobs:
       - name: Terraform Init
         run: terraform init
 
-      - name: Terraform Plan
-        run: terraform plan
-
-      - name: Terraform Apply
-        run: terraform apply -auto-approve
+      - name: Terraform Destroy
+        run: terraform destroy -auto-approve
