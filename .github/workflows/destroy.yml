@@ -1,4 +1,4 @@
-name: Terraform Destroy
+name: Terraform Destroy EC2
 
 on:
   workflow_dispatch:
@@ -26,5 +26,5 @@ jobs:
       - name: Terraform Init
         run: terraform init
 
-      - name: Terraform Destroy
-        run: terraform destroy -auto-approve
+      - name: Terraform Destroy EC2
+        run: terraform destroy -target=aws_instance.server -auto-approve
